@@ -1,7 +1,6 @@
 // console.log(process.argv);
 const path = require('path');
 const fs = require('fs');
-const { timeStamp } = require('console');
 
 const inputArgs = process.argv.slice(2)
 
@@ -15,7 +14,7 @@ if (!text) {
 }
 const log = `${text} ${timestamp}\n`;
 //console.log("Read Arguments");
-
+console.log(log);
 const filePath = path.join(__dirname, "log.txt");
 //console.log(text);
 //console.log(filePath);
