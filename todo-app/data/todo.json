@@ -1,0 +1,25 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Finish backend API",
+      "description": "Complete all CRUD operations for user management",
+      "completed": false,
+      "dueDate": "2025-06-05"
+    },
+    {
+      "id": 2,
+      "title": "Write unit tests",
+      "description": "Use Vitest to cover core logic of the API",
+      "completed": false,
+      "dueDate": "2025-06-07"
+    },
+    {
+      "id": 3,
+      "title": "Set up CI/CD",
+      "description": "Automate Docker build and deployment to production",
+      "completed": true,
+      "dueDate": "2025-05-30"
+    }
+  ]
+}
