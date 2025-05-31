@@ -8,12 +8,18 @@ const data = [
 const server = http.createServer((req, res) => {
   // res.end("Welcome to CRUD APP!");
   if (req.url === "/todos" && req.method === "GET") {
-    res.writeHead(200, "Successful", {
-      "content-type": "text/json",
-    })
+    // res.writeHead(200, "Successful", {
+    // "content-type": "text/json",
+    // })
     // res.setHeader(headers)
     // res.end("All Todos")
-    res.end(JSON.stringify(data));
+    // res.end(JSON.stringify(data));
+    // ? Send HTMl
+    res.writeHead(200, {
+      "content-type": "text/html"
+    })
+
+    res.end("<h1>Hello HTML</h1> <p>This is SSR!</p>");
   } else if (req.url === "/todos/create-todo" && req.method === "POST") {
     res.end("Todos Created");
   } else {
