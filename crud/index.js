@@ -3,6 +3,9 @@ const http = require('http')
 const server = http.createServer((req, res) => {
   // res.end("Welcome to CRUD APP!");
   if (req.url === "/todos" && req.method === "GET") {
+    res.writeHead(200, {
+      "content-type": "text/plain",
+    })
     res.end("All Todos")
   } else if (req.url === "/todos/create-todo" && req.method === "POST") {
     res.end("Todos Created");
