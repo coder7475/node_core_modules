@@ -4,7 +4,8 @@ const data = [
   {
     title: "Hello"
   }
-]
+];
+
 const server = http.createServer((req, res) => {
   // res.end("Welcome to CRUD APP!");
   if (req.url === "/todos" && req.method === "GET") {
