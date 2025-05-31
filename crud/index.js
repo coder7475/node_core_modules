@@ -1,13 +1,19 @@
 const http = require('http')
 
+const data = [
+  {
+    title: "Hello"
+  }
+]
 const server = http.createServer((req, res) => {
   // res.end("Welcome to CRUD APP!");
   if (req.url === "/todos" && req.method === "GET") {
     res.writeHead(200, "Successful", {
-      "content-type": "text/plain",
+      "content-type": "text/json",
     })
     // res.setHeader(headers)
-    res.end("All Todos")
+    // res.end("All Todos")
+    res.end(JSON.stringify(data));
   } else if (req.url === "/todos/create-todo" && req.method === "POST") {
     res.end("Todos Created");
   } else {
