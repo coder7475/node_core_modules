@@ -30,18 +30,20 @@ const server = http.createServer((req, res) => {
     })
 
     req.on('end', () => {
-      const todo = JSON.parse(data);
+
+      const { title, body } = JSON.parse(data);
+      const createdAt = new Date().toLocaleString();
+      const allTodos = fs.readFileSync(filePath, { encoding: "utf-8" });
+
+      allTodos.todos.push({ title, body, createdAt });
+
+      fs.writeFileSync(filePath, allTodos, { encoding: "utf-8" });
+
+
+      res.end("Todo Created!");
     })
 
 
-
-    req.on("end", () => {
-      console.log(data);
-      const todo = JSON.parse(data);
-      console.log(todo);
-    })
-
-    res.end("Todo Created!");
   } else {
 
     res.writeHead(404);
