@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
 
       allTodos.todos.push({ title, body, createdAt });
 
-      fs.writeFileSync(filePath, JSON.stringify(allTodos), { encoding: "utf-8" });
+      fs.writeFileSync(filePath, JSON.stringify(allTodos, null, 2), { encoding: "utf-8" });
 
 
       res.end("Todo Created!");
