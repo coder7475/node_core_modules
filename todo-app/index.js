@@ -7,9 +7,13 @@ const filePath = path.join(__dirname, "./data/todo.json");
 
 const server = http.createServer((req, res) => {
   if (req.url === "/" && req.method === "GET") {
+
     res.writeHead(200);
+
     res.end("Todo server is running!")
+
   } else if (req.url === "/todos" && req.method === "GET") {
+
     const data = fs.readFileSync(filePath, { encoding: "utf-8" });
 
     res.writeHead(200, {
@@ -17,8 +21,31 @@ const server = http.createServer((req, res) => {
     })
 
     res.end(data);
+
+  } else if (req.url === "/todos" && req.method === "POST") {
+    let data = "";
+
+    req.on("data", (chunk) => {
+      data += chunk;
+    })
+
+    req.on('end', () => {
+      const todo = JSON.parse(data);
+    })
+
+
+
+    req.on("end", () => {
+      console.log(data);
+      const todo = JSON.parse(data);
+      console.log(todo);
+    })
+
+    res.end("Todo Created!");
   } else {
+
     res.writeHead(404);
+
     res.end("Not Found!");
   }
 })
