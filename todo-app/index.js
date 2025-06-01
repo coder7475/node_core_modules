@@ -33,11 +33,12 @@ const server = http.createServer((req, res) => {
 
       const { title, body } = JSON.parse(data);
       const createdAt = new Date().toLocaleString();
-      const allTodos = fs.readFileSync(filePath, { encoding: "utf-8" });
+      const getTodos = fs.readFileSync(filePath, { encoding: "utf-8" });
+      const allTodos = JSON.parse(getTodos);
 
       allTodos.todos.push({ title, body, createdAt });
 
-      fs.writeFileSync(filePath, allTodos, { encoding: "utf-8" });
+      fs.writeFileSync(filePath, JSON.stringify(allTodos), { encoding: "utf-8" });
 
 
       res.end("Todo Created!");
